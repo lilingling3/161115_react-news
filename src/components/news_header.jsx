@@ -31,6 +31,17 @@ class NewsHeader extends Component {
     }
   }
 
+  componentWillMount = () => {
+    //读取保存的数据
+    const userId = localStorage.userId
+    const username = localStorage.username
+    if(userId) {
+      //更新状态
+      this.setState({userId, username})
+    }
+
+  }
+
   clickItem = (event) => {
     const {key} = event
     //更新状态
@@ -72,6 +83,9 @@ class NewsHeader extends Component {
               userId: result.UserId,
               username: result.NickUserName
             })
+            //保存到localStorage
+            localStorage.userId = result.UserId
+            localStorage.username = result.NickUserName
           }
         }
       })
@@ -80,11 +94,23 @@ class NewsHeader extends Component {
     this.setState({modalVisible: false})
   }
 
+  //登出
+  logout = () => {
+    //移除保存的数据
+    localStorage.userId = ''
+    localStorage.username = ''
+    //更新状态
+    this.setState({
+      userId: null,
+      username: null
+    })
+  }
+
   render() {
     const {currKey, username, modalVisible} = this.state
     const { getFieldDecorator } = this.props.form
     //确定用户menuItem
-    const userItem = username
+    const userItem = username   //'null'为true
       ? (
           <MenuItem key="logout" className="register">
             <Button type="primary">{username}</Button>
@@ -93,7 +119,7 @@ class NewsHeader extends Component {
               <Button type="dashed">个人中心</Button>
             </Link>
             &nbsp;&nbsp;
-            <Button type="ghost">退出</Button>
+            <Button type="ghost" onClick={this.logout}>退出</Button>
           </MenuItem>
         )
       : (
