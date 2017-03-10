@@ -6,6 +6,8 @@ import NewsContainer from './components/news_container'
 import NewsDetail from './components/news_detail'
 import UserCenter from './components/user_center'
 
+import './index.css'
+
 render((
   <Router history={hashHistory}>
     <Route path='/' component={App}>
