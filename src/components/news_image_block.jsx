@@ -34,7 +34,7 @@ class NewsImageBlock extends Component {
 
   render() {
 
-    const {title, imageWidth} = this.props
+    const {title, imageWidth, width} = this.props
     const {newsArr} = this.state
 
     const imageStyle = {
@@ -66,7 +66,7 @@ class NewsImageBlock extends Component {
       : '没有加载到任何数据'
 
     return (
-      <Card title={title}>
+      <Card title={title} className="topNewsList" style={{width}}>
         {newsList}
       </Card>
     )
