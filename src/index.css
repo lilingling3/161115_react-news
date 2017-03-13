@@ -113,16 +113,17 @@
   margin-bottom: 0 !important;
 }
 
+
 /*news_detail组件*/
 .title,.article-title .title {
-  font-size: 0.44rem !important;
+  font-size: 25px !important;
   line-height: 1.4em
 }
 .article-src-time {
-  font-size: 0.3rem !important;
+  font-size: 18px !important;
 }
 .article-content .txt {
-  font-size: 0.36rem !important;
+  font-size: 20px !important;
 }
 .article {
   text-align: justify
