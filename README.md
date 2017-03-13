@@ -1,7 +1,7 @@
 ## react app 笔记
 
 ## REST API
-* restful api
+* restful api(rest风格API)
   * http://localhost:3000/posts/1
   * url中不包含行为数据
   * 通过请求方式来确定来行为
@@ -9,7 +9,7 @@
     * POST
     * PUT
     * DELETE
-* restless api
+* restless api(非rest风格API)
   * http://newsapi.gugujiankong.com/Handler.ashx?action=getusercomments&userid=514
   * url参数包含行为数据
   * 请求方式不决定行为
