@@ -1,13 +1,17 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Router, Route, hashHistory, IndexRoute} from 'react-router'
+import MediaQuery from 'react-responsive'
+
 import App from './components/app'
 import NewsContainer from './components/news_container'
 import NewsDetail from './components/news_detail'
 import UserCenter from './components/user_center'
-import MediaQuery from 'react-responsive'
 
-import './index.css'
+import MobileApp from './components/mobile_app'
+import MobileNewsContainer from './components/mobile_news_container'
+import MobileNewsDetail from './components/mobile_news_detail'
+import MobileUserCenter from './components/mobile_user_center'
 
 render((
 
@@ -22,7 +26,13 @@ render((
     </Router>
   </MediaQuery>
   <MediaQuery query='(max-device-width: 1224px)'>
-    <div>You are a tablet or mobile phone</div>
+    <Router history={hashHistory}>
+      <Route path='/' component={MobileApp}>
+        <IndexRoute component={MobileNewsContainer}></IndexRoute>
+        <Route path='/news_detail/:news_id' component={MobileNewsDetail}></Route>
+        <Route path='/user_center' component={MobileUserCenter}></Route>
+      </Route>
+    </Router>
   </MediaQuery>
 </div>
 
